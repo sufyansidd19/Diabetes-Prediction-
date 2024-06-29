@@ -8,6 +8,6 @@ This repository consists of a project focused on analyzing and predicting diabet
 
 
 ## First-time setup
-1. Make python's virtual environment (`python -m venv venv`)
+1. Make python's virtual environment (`python -m venv env`)
 2. Activate the virtual environment (`env/Scripts/activate.bat`)
 3. Install required packages & dependencies (`pip install -r .requirements.txt`)
