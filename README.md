@@ -11,3 +11,8 @@ This repository consists of a project focused on analyzing and predicting diabet
 1. Make python's virtual environment (`python -m venv env`)
 2. Activate the virtual environment (`env/Scripts/activate.bat`)
 3. Install required packages & dependencies (`pip install -r requirements.txt`)
+
+## How to run it?
+1. Open the terminal from your directory. 
+2. Run the command(`streamlit run Diabetes_Predictor_App.py`)
+3. There you go!
