@@ -72,6 +72,33 @@ def main():
     bmi = st.number_input('BMI', min_value=19.0, max_value=47.75, value=25.0, step=0.1)
 
     model = GaussianNB()
+    data=pd.read_csv(r"dataset.csv",encoding='unicode_escape')
+    class_mapping = {
+        'N':0,
+        'N ':0,
+        'Y': 1,
+        'P': 0,
+    }
+    gender_mapping={'M':0,'F':1,'f':1}
+    data = data.rename(columns={"No_Pation" : "No of patients", "AGE" : "Age", "CLASS" : "Class"})
+    data['Gender']=data['Gender'].replace(gender_mapping)
+    # Replace class labels with numerical values
+    data['Class'] = data['Class'].replace(class_mapping)
+    predictors=data.drop(["Class",'ID','No of patients'], axis=1)
+    Target=data['Class']
+    scaler = StandardScaler()
+    X_scaled = predictors
+    X_train,X_test,Y_train,Y_test =train_test_split(X_scaled,Target,test_size=0.2,random_state=30)
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+
+    # Fit the model
+    model.fit(X_train_scaled, Y_train)
+    y_pred_train = model.predict(X_test_scaled)
+    train_accuracy = accuracy_score(y_pred_train,Y_test)
+    # Train button
+    if st.button('Train Model'):
+        st.success(f'Model trained successfully! Train Accuracy: {train_accuracy:.2f}')
 
     # Predict button
     if st.button('Predict'):
