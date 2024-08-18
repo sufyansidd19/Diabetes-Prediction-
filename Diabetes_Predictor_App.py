@@ -1,4 +1,8 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
+
+if st.button("Reload page"):
+    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
